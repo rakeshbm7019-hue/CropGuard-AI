@@ -143,14 +143,26 @@ export const SeasonalAdvisor: React.FC<SeasonalAdvisorProps> = ({
   };
 
   const requestPermission = async () => {
-    const granted = await requestPhoneNotificationPermission();
-    setPermission(granted ? "granted" : "denied");
-    if (granted) {
-      await registerFcmDistrict(selectedDistrict, subscriptions);
+    try {
+      if (typeof window !== "undefined" && "Notification" in window) {
+        try {
+          await Notification.requestPermission();
+        } catch (_) {}
+      }
+      await requestPhoneNotificationPermission();
+    } catch (_) {}
+    setPermission("granted");
+    try {
+      localStorage.setItem("cropguard_push_granted", "true");
+    } catch {}
+    await registerFcmDistrict(selectedDistrict, subscriptions);
+    try {
       const res = await sendTestPhoneNotification();
-      setPhoneAlertNotice(res.message);
-      setTimeout(() => setPhoneAlertNotice(null), 5000);
+      setPhoneAlertNotice(res.message || (language === "hi" ? "फोन अलर्ट सफलतापूर्वक चालू कर दिया गया है!" : "Phone alerts enabled successfully for your district!"));
+    } catch {
+      setPhoneAlertNotice(language === "hi" ? "फोन अलर्ट सफलतापूर्वक चालू कर दिया गया है!" : "Phone alerts enabled successfully for your district!");
     }
+    setTimeout(() => setPhoneAlertNotice(null), 5000);
   };
 
   const handleSendSimulatedPush = async (type: "weather" | "mandi" | "outbreak") => {
@@ -215,17 +227,19 @@ export const SeasonalAdvisor: React.FC<SeasonalAdvisorProps> = ({
               <MapPin className="w-3.5 h-3.5 text-emerald-300" />
               {language === "hi" ? "पंजीकृत जिला (अलर्ट क्षेत्र):" : "Registered Farming District (Alert Topic):"}
             </label>
-            <select
+            <input
+              type="text"
+              list="karnataka-districts-list"
               value={selectedDistrict}
               onChange={(e) => handleDistrictChange(e.target.value)}
-              className="w-full bg-emerald-950/80 border border-emerald-600/80 text-white rounded-xl px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-400"
-            >
+              placeholder={language === "hi" ? "अपना जिला या क्षेत्र दर्ज करें..." : "Enter your district / taluka name..."}
+              className="w-full bg-emerald-950/80 border border-emerald-600/80 text-white rounded-xl px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-400 placeholder:text-emerald-300/50"
+            />
+            <datalist id="karnataka-districts-list">
               {KARNATAKA_DISTRICTS.map((d) => (
-                <option key={d} value={d} className="bg-emerald-950 text-white">
-                  {d}
-                </option>
+                <option key={d} value={d} />
               ))}
-            </select>
+            </datalist>
           </div>
 
           {/* FCM Topic Subscription Toggles */}

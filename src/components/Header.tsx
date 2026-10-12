@@ -155,27 +155,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Controls: Online/Offline indicator, Language, Dark/Light, Auth, Admin */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Network Status Badge */}
-            <div
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${
-                isOnline
-                  ? `bg-emerald-50 text-emerald-700 dark:bg-emerald-900/60 dark:text-emerald-300 border-current/20`
-                  : "bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-950/60 dark:border-amber-800 dark:text-amber-300 animate-pulse"
-              }`}
-              title={isOnline ? t.onlineNotice : t.offlineNotice}
-            >
-              {isOnline ? (
-                <>
-                  <Wifi className="w-3.5 h-3.5" />
-                  <span className="hidden md:inline">Online</span>
-                </>
-              ) : (
-                <>
-                  <WifiOff className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                  <span>Offline</span>
-                </>
-              )}
-            </div>
+
 
             {/* Language Selector Dropdown - only after login */}
             {user?.isLoggedIn && (

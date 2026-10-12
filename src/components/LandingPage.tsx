@@ -195,15 +195,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onOpenAd
       </motion.div>
 
       {/* 2. CORE FEATURES SHOWCASE SECTION */}
-      <section className="w-full max-w-6xl mx-auto space-y-10" id="landing-features-section">
+      <section className="w-full max-w-6xl mx-auto space-y-8" id="landing-features-section">
         <div className="text-center space-y-3">
           <h2 className="text-2xl sm:text-4xl font-black text-stone-900 dark:text-zinc-50 tracking-tight">
             Features & Smart Farming Tools
           </h2>
           <p className="text-sm sm:text-base text-stone-600 dark:text-zinc-300 max-w-2xl mx-auto">
-            From instant AI leaf pathology to precision knapsack sprayer math and live APMC mandi tickers, CropGuard equips you with everything you need in the field.
+            From instant AI leaf pathology to precision knapsack sprayer math and live APMC mandi tickers, CropGuard AI equips you with everything you need in the field.
           </p>
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, idx) => {

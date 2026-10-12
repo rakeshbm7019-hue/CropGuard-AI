@@ -25,6 +25,7 @@ import {
 import { Language, UserProfile } from "../types";
 import { UI_TRANSLATIONS } from "../data/translations";
 import { signInWithSupabaseEmail, saveUserProfileToSupabase, sendSupabasePhoneOtp, verifySupabasePhoneOtp } from "../lib/supabase";
+import { requestPhoneNotificationPermission } from "../lib/notificationService";
 
 interface FarmerAuthGateProps {
   language: Language;
@@ -50,6 +51,7 @@ export const FarmerAuthGate: React.FC<FarmerAuthGateProps> = ({
   const [farmerName, setFarmerName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [farmLocation, setFarmLocation] = useState("");
+  const [farmingDistrict, setFarmingDistrict] = useState("");
   const [primaryCrop, setPrimaryCrop] = useState("");
   const [landCategory, setLandCategory] = useState("");
 
@@ -111,7 +113,8 @@ export const FarmerAuthGate: React.FC<FarmerAuthGateProps> = ({
       phoneOrEmail: "+91 " + phoneNumber,
       loginType: "phone",
       isLoggedIn: true,
-      location: farmLocation.trim() || "India (Field Worker)",
+      location: farmLocation.trim() || farmingDistrict.trim() || "India (Field Worker)",
+      district: farmingDistrict.trim() || undefined,
       language: language,
       termsAccepted: true,
       primaryCrop: primaryCrop || "Tomato",
@@ -119,6 +122,11 @@ export const FarmerAuthGate: React.FC<FarmerAuthGateProps> = ({
       isVerified: true,
       verifiedMethod: "phone",
     };
+
+    // Automatically enable phone notifications
+    try {
+      requestPhoneNotificationPermission().catch(() => {});
+    } catch (_) {}
 
     // Simulate DB save
     try {
@@ -348,9 +356,23 @@ export const FarmerAuthGate: React.FC<FarmerAuthGateProps> = ({
                     </label>
                     <input
                       type="text"
-                      placeholder="Enter your Village, Taluka, or District"
+                      placeholder="Enter your Village or Taluka"
                       value={farmLocation}
                       onChange={(e) => setFarmLocation(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-2xl bg-stone-50 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 text-xs sm:text-sm text-stone-900 dark:text-white focus:outline-none focus:border-emerald-600"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-stone-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
+                      Farming District *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Davanagere, Nashik, Kolar, Guntur"
+                      value={farmingDistrict}
+                      onChange={(e) => setFarmingDistrict(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-2xl bg-stone-50 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 text-xs sm:text-sm text-stone-900 dark:text-white focus:outline-none focus:border-emerald-600"
                     />
                   </div>

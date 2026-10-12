@@ -612,51 +612,6 @@ export const FertilizerShopFinder: React.FC<FertilizerShopFinderProps> = ({
         </div>
       )}
 
-      {/* Single Location Search Form with subtle 30s Live GPS indicator */}
-      <form
-        onSubmit={handleSearchSubmit}
-        className="p-6 rounded-3xl bg-white dark:bg-zinc-900 border border-stone-200/80 dark:border-zinc-800 shadow-xs space-y-3"
-      >
-        <div className="flex items-center justify-between gap-2 flex-wrap">
-          <h3 className="text-sm font-bold text-stone-900 dark:text-white flex items-center gap-2">
-            <Search className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-            <span>Search Shops by Custom Village, Taluka, or APMC Market:</span>
-          </h3>
-
-          <div className="flex items-center gap-2 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200/80 dark:border-emerald-800">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Live GPS Auto-Sync (Every 30 min)</span>
-          </div>
-        </div>
-
-        {/* Single Primary Search Bar */}
-        <div className="flex flex-col sm:flex-row gap-2">
-          <div className="relative flex-1">
-            <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-3.5" />
-            <input
-              type="text"
-              placeholder={t.searchShopPlaceholder || "Enter village, taluka, APMC market or city name..."}
-              value={locationInput}
-              onChange={(e) => setLocationInput(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-2xl bg-stone-50 dark:bg-zinc-800/80 border border-stone-200 dark:border-zinc-700 text-xs sm:text-sm text-stone-900 dark:text-zinc-100 focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-colors shrink-0 cursor-pointer"
-          >
-            {loading ? (
-              <RefreshCw className="w-4 h-4 animate-spin" />
-            ) : (
-              <Search className="w-4 h-4" />
-            )}
-            <span>{t.fetchShopsButton || "Find Local Shops"}</span>
-          </button>
-        </div>
-      </form>
-
       {/* Filter Category Pills */}
       <div className="flex items-center justify-between gap-2 flex-wrap">
         <div className="flex items-center gap-1.5 flex-wrap">

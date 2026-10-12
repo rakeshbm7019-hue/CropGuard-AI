@@ -326,7 +326,7 @@ export const CommunityOutbreakRadar: React.FC<CommunityOutbreakRadarProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-700 text-white shadow-lg relative overflow-hidden">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-green-700 text-white shadow-lg relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 flex-wrap">
@@ -338,7 +338,7 @@ export const CommunityOutbreakRadar: React.FC<CommunityOutbreakRadarProps> = ({
                 📍 {districtsSummary.districtsCovered || districtsList.length || 20} Agricultural Districts Monitored
               </span>
               {selectedDistrict !== "all" && (
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-white text-rose-700">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-white text-emerald-700">
                   District: {selectedDistrict}
                 </span>
               )}
@@ -346,7 +346,7 @@ export const CommunityOutbreakRadar: React.FC<CommunityOutbreakRadarProps> = ({
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight flex items-center gap-2.5">
               <span>{t.outbreakTitle || "Community Pest & Disease Outbreak Radar"}</span>
             </h2>
-            <p className="text-xs sm:text-sm text-rose-100 max-w-2xl">
+            <p className="text-xs sm:text-sm text-emerald-100 max-w-2xl">
               Track real-time pathogen clusters and insect infestations across Indian agricultural districts. Filter by your district for immediate ICAR & KVK advisories.
             </p>
           </div>
@@ -362,7 +362,7 @@ export const CommunityOutbreakRadar: React.FC<CommunityOutbreakRadarProps> = ({
 
             <button
               onClick={() => setShowReportModal(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white text-rose-700 hover:bg-rose-50 text-xs sm:text-sm font-extrabold shadow-md transition-all active:scale-95"
+              className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white text-emerald-700 hover:bg-emerald-50 text-xs sm:text-sm font-extrabold shadow-md transition-all active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span>Report Outbreak</span>
@@ -406,13 +406,6 @@ export const CommunityOutbreakRadar: React.FC<CommunityOutbreakRadarProps> = ({
               <span className="text-xs font-black tracking-wide uppercase text-white">
                 {phoneNotificationGranted ? "Phone Notifications Active" : "Enable Phone Notifications"}
               </span>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${
-                phoneNotificationGranted
-                  ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
-                  : "bg-amber-500/20 text-amber-300 border border-amber-500/30"
-              }`}>
-                {phoneNotificationGranted ? "Real-Time Push Enabled" : "One-Tap Setup"}
-              </span>
             </div>
             <p className="text-xs text-stone-400 mt-0.5 max-w-xl">
               {phoneNotificationGranted
@@ -440,45 +433,6 @@ export const CommunityOutbreakRadar: React.FC<CommunityOutbreakRadarProps> = ({
               <span>Send Test Alert</span>
             </button>
           )}
-        </div>
-      </div>
-
-      {/* Quick District Selector Bar */}
-      <div className="p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 shadow-xs space-y-3">
-        <div className="flex items-center justify-between flex-wrap gap-2 text-xs">
-          <span className="font-bold text-stone-700 dark:text-zinc-300 flex items-center gap-1.5">
-            <Compass className="w-4 h-4 text-rose-600" />
-            <span>Select Your District:</span>
-          </span>
-          <span className="text-[11px] text-stone-500 dark:text-zinc-400">
-            {districtsList.length} districts in network · Showing alerts for: <strong>{selectedDistrict === "all" ? "All Districts" : selectedDistrict}</strong>
-          </span>
-        </div>
-
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
-          {POPULAR_DISTRICTS.map((dist) => {
-            const isSelected = (dist === "All" && selectedDistrict === "all") || selectedDistrict.toLowerCase() === dist.toLowerCase();
-            return (
-              <button
-                key={dist}
-                onClick={() => {
-                  if (dist === "All") {
-                    setSelectedDistrict("all");
-                  } else {
-                    setSelectedDistrict(dist);
-                    setDistrictIntelTarget(dist);
-                  }
-                }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-                  isSelected
-                    ? "bg-rose-600 text-white shadow-xs"
-                    : "bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-700 text-stone-700 dark:text-zinc-300"
-                }`}
-              >
-                {dist === "All" ? "🇮🇳 All Districts" : dist}
-              </button>
-            );
-          })}
         </div>
       </div>
 

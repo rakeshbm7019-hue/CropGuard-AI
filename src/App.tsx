@@ -339,40 +339,6 @@ export default function App() {
         )}
       </main>
 
-      {/* Minimal Clean Bottom Bar - Offline & Admin Portal Only */}
-      <footer className="mt-12 py-6 border-t border-stone-200/80 dark:border-zinc-800 text-xs text-stone-500 dark:text-zinc-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div>
-            © {new Date().getFullYear()} CropGuard
-          </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => {
-                setCurrentTab("offline");
-                setShowLanding(false);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="hover:text-stone-800 dark:hover:text-zinc-200 transition-colors cursor-pointer"
-            >
-              Offline Handbook
-            </button>
-            <span className="text-stone-300 dark:text-zinc-700">•</span>
-            <button
-              onClick={() => {
-                setCurrentTab("admin");
-                setShowLanding(false);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              id="bottom-admin-portal-link"
-              className="inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold transition-colors cursor-pointer"
-            >
-              <span>🛡️</span>
-              <span>Admin Portal</span>
-            </button>
-          </div>
-        </div>
-      </footer>
-
       {/* Auth Modal (can also be invoked from header or other buttons) */}
       <AuthModal
         isOpen={authModalOpen}

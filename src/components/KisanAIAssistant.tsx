@@ -26,7 +26,6 @@ import {
   FileCheck,
   RotateCw,
   AlertCircle,
-  Radio,
   CheckCircle2,
 } from "lucide-react";
 import { Language, UserProfile } from "../types";
@@ -127,27 +126,27 @@ export const KisanAIAssistant: React.FC<KisanAIAssistantProps> = ({ language, us
   const getInitialGreeting = (name: string, lang: Language) => {
     switch (lang) {
       case "hi":
-        return `नमस्ते ${name}! मैं किसान मित्र AI हूँ। मुझसे फसल रोगों, उर्वरक मात्रा, मंडी भाव या खेती से जुड़ा कोई भी सवाल पूछें।`;
+        return `नमस्ते ${name}! मैं किसान AI हूँ। मुझसे फसल रोगों, उर्वरक मात्रा, मंडी भाव या खेती से जुड़ा कोई भी सवाल पूछें।`;
       case "kn":
-        return `ನಮಸ್ತೆ ${name}! ನಾನು ಕಿಸಾನ್ ಮಿತ್ರ AI. ಬೆಳೆ ರೋಗಗಳು, ಗೊಬ್ಬರದ ಪ್ರಮಾಣ, ಮಾರುಕಟ್ಟೆ ಧಾರಣೆ ಅಥವಾ ಕೃಷಿ ಸಲಹೆಗಳ ಬಗ್ಗೆ ಯಾವುದೇ ಪ್ರಶ್ನೆ ಕೇಳಿ.`;
+        return `ನಮಸ್ತೆ ${name}! ನಾನು ಕಿಸಾನ್ AI. ಬೆಳೆ ರೋಗಗಳು, ಗೊಬ್ಬರದ ಪ್ರಮಾಣ, ಮಾರುಕಟ್ಟೆ ಧಾರಣೆ ಅಥವಾ ಕೃಷಿ ಸಲಹೆಗಳ ಬಗ್ಗೆ ಯಾವುದೇ ಪ್ರಶ್ನೆ ಕೇಳಿ.`;
       case "te":
-        return `నమస్తే ${name}! నేను కిసాన్ మిత్ర AI. పంట వ్యాధులు, ఎరువుల మోతాదు, మార్కెట్ ధరలు లేదా వ్యవసాయంపై ఏవైనా ప్రశ్నలు అడగండి.`;
+        return `నమస్తే ${name}! నేను కిసాన్ AI. పంట వ్యాధులు, ఎరువుల మోతాదు, మార్కెట్ ధరలు లేదా వ్యవసాయంపై ఏవైనా ప్రశ్నలు అడగండి.`;
       case "ta":
-        return `வணக்கம் ${name}! நான் கிசான் மித்ரா AI. பயிர் நோய்கள், உர பரிந்துரைகள், சந்தை விலைகள் அல்லது விவசாயம் குறித்த கேள்விகளைக் கேளுங்கள்.`;
+        return `வணக்கம் ${name}! நான் கிசான் AI. பயிர் நோய்கள், உர பரிந்துரைகள், சந்தை விலைகள் அல்லது விவசாயம் குறித்த கேள்விகளைக் கேளுங்கள்.`;
       case "mr":
-        return `नमस्कार ${name}! मी किसान मित्र AI आहे. पीक रोग, खतांचे प्रमाण, बाजारभाव किंवा शेतीसंबंधी कोणताही प्रश्न विचारा.`;
+        return `नमस्कार ${name}! मी किसान AI आहे. पीक रोग, खतांचे प्रमाण, बाजारभाव किंवा शेतीसंबंधी कोणताही प्रश्न विचारा.`;
       case "pa":
-        return `ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ${name}! ਮੈਂ ਕਿਸਾਨ ਮਿੱਤਰ AI ਹਾਂ। ਫਸਲਾਂ ਦੇ ਰੋਗਾਂ, ਖਾਦਾਂ ਦੀ ਮਾਤਰਾ, ਮੰਡੀ ਦੇ ਭਾਵਾਂ ਜਾਂ ਖੇਤੀਬਾੜੀ ਬਾਰੇ ਕੋਈ ਵੀ ਸਵਾਲ ਪੁੱਛੋ।`;
+        return `ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ${name}! ਮੈਂ ਕਿਸਾਨ AI ਹਾਂ। ਫਸਲਾਂ ਦੇ ਰੋਗਾਂ, ਖਾਦਾਂ ਦੀ ਮਾਤਰਾ, ਮੰਡੀ ਦੇ ਭਾਵਾਂ ਜਾਂ ਖੇਤੀਬਾੜੀ ਬਾਰੇ ਕੋਈ ਵੀ ਸਵਾਲ ਪੁੱਛੋ।`;
       case "bn":
-        return `নমস্কার ${name}! আমি কিষাণ মিত্র AI। ফসলের রোগ, সার প্রয়োগ, বাজার দর বা কৃষি সংক্রান্ত যে কোনো প্রশ্ন জিজ্ঞাসা করুন।`;
+        return `নমস্কার ${name}! আমি কিষাণ AI। ফসলের রোগ, সার প্রয়োগ, বাজার দর বা কৃষি সংক্রান্ত যে কোনো প্রশ্ন জিজ্ঞাসা করুন।`;
       case "gu":
-        return `નમસ્તે ${name}! હું કિસાન મિત્ર AI છું. પાકના રોગો, ખાતરના પ્રમાણ, બજાર ભાવ અથવા ખેતી વિશે કોઈ પણ પ્રશ્ન પૂછો.`;
+        return `નમસ્તે ${name}! હું કિસાન AI છું. પાકના રોગો, ખાતરના પ્રમાણ, બજાર ભાવ અથવા ખેતી વિશે કોઈ પણ પ્રશ્ન પૂછો.`;
       case "ml":
-        return `നമസ്കാരം ${name}! ഞാൻ കിസാൻ മിത്ര AI ആണ്. വിള രോഗങ്ങൾ, വളപ്രയോഗം, മാർക്കറ്റ് വിലകൾ അല്ലെങ്കിൽ കൃഷിയെക്കുറിച്ചുള്ള ഏത് സംശയവും ചോദിക്കാം.`;
+        return `നമസ്കാരം ${name}! ഞാൻ കിസാൻ AI ആണ്. വിള രോഗങ്ങൾ, വളപ്രയോഗം, മാർക്കറ്റ് വിലകൾ അല്ലെങ്കിൽ കൃഷിയെക്കുറിച്ചുള്ള ഏത് സംശയവും ചോദിക്കാം.`;
       case "or":
-        return `ନମସ୍କାର ${name}! ମୁଁ କିସାନ ମିତ୍ର AI। ଫସଲ ରୋଗ, ସାର ପ୍ରୟୋଗ, ମଣ୍ଡି ଦର କିମ୍ବା କୃଷି ସମ୍ବନ୍ଧୀୟ ଯେକୌଣସି ପ୍ରଶ୍ନ ପଚାରନ୍ତୁ।`;
+        return `ନମସ୍କାର ${name}! ମୁଁ କିସାନ AI। ଫସଲ ରୋଗ, ସାର ପ୍ରୟୋଗ, ମଣ୍ଡି ଦର କିମ୍ବା କୃଷି ସମ୍ବନ୍ଧୀୟ ଯେକୌଣସି ପ୍ରଶ୍ନ ପଚାରନ୍ତୁ।`;
       default:
-        return `Namaste ${name}! I am Kisan Mitra AI (किसान मित्र). Ask me any question regarding plant diseases, fertilizer calculations, Mandi price trends, or crop health management.`;
+        return `Namaste ${name}! I am Kisan AI. Ask me any question regarding plant diseases, fertilizer calculations, Mandi price trends, or crop health management.`;
     }
   };
 
@@ -186,7 +185,7 @@ export const KisanAIAssistant: React.FC<KisanAIAssistantProps> = ({ language, us
   const [liveVoiceTranscript, setLiveVoiceTranscript] = useState("");
   const [voiceError, setVoiceError] = useState<string | null>(null);
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
-  const [isVoiceAgentActive, setIsVoiceAgentActive] = useState<boolean>(true); // Auto-read answers by default
+  const [isVoiceAgentActive, setIsVoiceAgentActive] = useState<boolean>(false);
 
   const voiceSessionRef = useRef<VoiceRecordingSession | null>(null);
 
@@ -742,69 +741,6 @@ export const KisanAIAssistant: React.FC<KisanAIAssistantProps> = ({ language, us
         </div>
       )}
 
-      {/* Header Banner */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 text-stone-900 dark:text-zinc-100">
-        <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60 flex items-center justify-center text-xl shrink-0">
-            🤖
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-lg font-bold text-stone-900 dark:text-emerald-200 tracking-tight">
-                {t.kisanAiTitle}
-              </h2>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
-                Live Multilingual Voice
-              </span>
-            </div>
-            <p className="text-xs text-stone-700 dark:text-zinc-300">
-              Agronomy advisor in {LANGUAGE_NAMES[language]?.native || "Indian Languages"} ({LANGUAGE_NAMES[language]?.name})
-            </p>
-          </div>
-        </div>
-
-        {/* Voice Agent & Clear Controls */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Voice Agent Auto-Speak Toggle */}
-          <button
-            type="button"
-            onClick={() => {
-              const next = !isVoiceAgentActive;
-              setIsVoiceAgentActive(next);
-              if (!next) stopAllSpeech();
-            }}
-            className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center gap-1.5 ${
-              isVoiceAgentActive
-                ? "bg-emerald-600 text-white border-emerald-500 shadow-xs"
-                : "bg-stone-50 dark:bg-zinc-800 border-stone-200 dark:border-zinc-700 text-stone-600 dark:text-zinc-400 hover:text-stone-900 dark:hover:text-zinc-200"
-            }`}
-            title="Auto-read agricultural answers via AI Voice Agent"
-          >
-            {isVoiceAgentActive ? (
-              <>
-                <Volume2 className="w-3.5 h-3.5 animate-pulse" />
-                <span>Voice Agent: ON</span>
-              </>
-            ) : (
-              <>
-                <VolumeX className="w-3.5 h-3.5" />
-                <span>Voice Agent: OFF</span>
-              </>
-            )}
-          </button>
-
-          {/* Clear Chat */}
-          <button
-            type="button"
-            onClick={clearChat}
-            className="p-2 rounded-xl bg-stone-50 dark:bg-zinc-800 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-stone-500 dark:text-zinc-400 hover:text-rose-600 dark:hover:text-rose-300 border border-stone-200 dark:border-zinc-700 transition-colors"
-            title="Reset conversation"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
 
       {/* Voice Error Notification Banner */}
       {voiceError && (
@@ -937,7 +873,7 @@ export const KisanAIAssistant: React.FC<KisanAIAssistantProps> = ({ language, us
         {isLoading && (
           <div className="flex items-center gap-2 text-xs text-emerald-700 dark:text-emerald-400 p-2.5 bg-stone-50 dark:bg-zinc-800/80 rounded-xl border border-stone-200 dark:border-zinc-700 w-fit">
             <RefreshCw className="w-4 h-4 animate-spin" />
-            <span>Kisan Mitra AI is analyzing your input and agricultural documents...</span>
+            <span>Kisan AI is analyzing your input and agricultural documents...</span>
           </div>
         )}
 
